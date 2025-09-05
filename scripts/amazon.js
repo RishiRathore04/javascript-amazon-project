@@ -1,6 +1,8 @@
-let productsHTML = '';
+import {cart} from '../data/cart.js';  // put all the imports ata the top of the file
 
-products.forEach( (product) => {
+let productsHTML = ''; 
+
+products.forEach( (product) => { 
   productsHTML += `
     <div class="product-container">
       <div class="product-image-container">
@@ -8,7 +10,7 @@ products.forEach( (product) => {
           src="${product.image}">
       </div>
 
-      <div class="product-name limit-text-to-2-lines">
+      <div class="product-name limit-text-to-2-lines"> 
         ${product.name}
       </div>
 
