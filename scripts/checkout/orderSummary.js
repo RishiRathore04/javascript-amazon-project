@@ -5,10 +5,6 @@ import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 import { deliveryOptions, getDeliveryOption } from '../../data/deliveryOptions.js';
 import { renderPaymentSummary } from './paymentSummary.js';
 
-console.log(dayjs());
-console.log(dayjs().add(7,'day'));
-console.log(dayjs().format('dddd, MMMM D'));
-
 export function renderOrderSummary() {
   let cartSummaryHTML = '';
 
@@ -128,6 +124,8 @@ export function renderOrderSummary() {
         );
         
         container.remove();
+
+        renderPaymentSummary();
       });
     });	
 
