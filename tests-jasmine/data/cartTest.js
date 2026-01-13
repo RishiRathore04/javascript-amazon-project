@@ -45,4 +45,7 @@ describe('tests suite: addToCart', () => {
 
 * we will create a fake version of localStorage.getItem so that we can make it whatever we want --> like return an empty array
 * spyOn will replace localstorage.getItem with the fake version  ==> we have mocked the getItem method
-* we can't check whats inside localstorage as we have faked it so we will check how many times it is called*/ 
+* we will mock localstorage,setItem (we dont want test to modify localstorage)
+* we can't check whats inside localstorage as we have faked it so we will check how many times it is called
+* toHaveBeenCalled works only when we use spy on 
+* mocks only works for one test*/

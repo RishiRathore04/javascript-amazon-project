@@ -49,6 +49,8 @@ export function addToCart(productId) {
 }
 
 export function removeFromCart(productId){
+   if (!productId) return; // 🔒 safety
+
   const newCart = [];
   cart.forEach((cartItem) => {
     if(cartItem.productId !== productId){
