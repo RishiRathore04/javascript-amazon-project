@@ -1,14 +1,14 @@
 class Cart {
   cartItem;    //in class we dont need to write undefined its already underestand 
-  localStorageKey;
+  #localStorageKey;
 
   constructor (localStorageKey) {
-    this.localStorageKey = localStorageKey;
-    this.loadFromStorage();
+    this.#localStorageKey = localStorageKey;
+    this.#loadFromStorage();
   }
 
-  loadFromStorage() {
-    this.cartItem = JSON.parse(localStorage.getItem(this.localStorageKey));   // using parametere to avoid getting the same data from same place
+  #loadFromStorage() {
+    this.cartItem = JSON.parse(localStorage.getItem(this.#localStorageKey));   // using parametere to avoid getting the same data from same place
 
     if(!this.cartItem){
       this.cartItem = [{
@@ -24,7 +24,7 @@ class Cart {
   }
   
   saveToStorage() {
-    localStorage.setItem(this.localStorageKey, JSON.stringify(this.cartItem));  //using cart-oop so that this does not affect the original cart
+    localStorage.setItem(this.#localStorageKey, JSON.stringify(this.cartItem));  //using cart-oop so that this does not affect the original cart
   }
   
   addToCart(productId) {
