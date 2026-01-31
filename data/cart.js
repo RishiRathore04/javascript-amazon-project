@@ -75,3 +75,16 @@ export function updateDeliveryOptions(productId, deliveryOptionId){
 
   saveToStorage();
 }
+
+export function loadCart(fun){    // as a calback () this is not used as it will exeute fun instantly
+
+  const xhr = new XMLHttpRequest();
+
+  xhr.addEventListener('load', () => {
+    console.log('successfully loaded cart');
+    fun();
+  }); 
+
+  xhr.open('GET', 'https://supersimplebackend.dev/cart');
+  xhr.send();
+}
