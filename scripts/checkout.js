@@ -7,15 +7,23 @@ import {renderPaymentSummary} from './checkout/paymentSummary.js';
 //import '../data/car.js';
 //import '../data/backend-practice.js';
 
-// new Promise( (resolve) => {
-// 	loadProducts( () => {
+// new Promise( (resolve, reject) => {
+// 	loadProducts( (error) => {  
+//     if(error){
+//       reject('failed to load products');
+//       return;
+//     }
 // 		resolve('value1');   //we can can give resole a value 
 // 	});
 
 // }).then( (value) => {   // what ever we give to resolve it pass as parameter in then ..it lets us share a value between two steps of a promise
 //   console.log(value);
-//   return new Promise( (resolve) => {    //we want to load cart to finish then go to next step ..to solve this we create a new promise as it give resolve 
-//     loadCart( () => {
+//   return new Promise( (resolve, reject) => {    //we want to load cart to finish then go to next step ..to solve this we create a new promise as it give resolve 
+//     loadCart( (error) => {
+//       if(error){
+//         reject('Failed to load cart');
+//         return;
+//       }
 //       resolve();
 //     });
 //   });
@@ -24,18 +32,17 @@ import {renderPaymentSummary} from './checkout/paymentSummary.js';
 //   renderCheckoutHeader();
 //   renderOrderSummary();
 //   renderPaymentSummary();
-// })
+
+// }).catch((error) => {
+//   console.error(error);
+// });
 
 Promise.all([
   new Promise((resolve) => {
-    loadProducts(() => {
-      resolve('value1');
-    });
+    loadProducts(err => err ? reject(err) : resolve());
   }),
-  new Promise((resolve) => {
-    loadCart(() => {
-      resolve();
-    });
+  new Promise((resolve, reject) => {
+    loadCart(err => err ? reject(err) : resolve());
   })
 
 ]).then((values) => {
@@ -45,7 +52,9 @@ Promise.all([
   renderCheckoutHeader();
   renderOrderSummary();
   renderPaymentSummary();
-});
+}).catch((error) => {
+  console.error('Checkout failed:', error);
+});;
 
 
 //using call backs 
