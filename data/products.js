@@ -114,7 +114,34 @@ object3.method();
 */
 
 export let products = [];
+ 
+export function loadProductsFetch(){
+  const promise = fetch(
+    'https://supersimplebackend.dev/products'
+  ).then((response) => {
+    return response.json()
+  }).then((productsData) => {
+      products = productsData.map((productDetails) => {
+      if(productDetails.type === 'clothing') {
+        return new Clothing(productDetails);
+      }else if(productDetails.type === 'appliance') {
+        return new Appliance(productDetails);
+      }
+      return new Product(productDetails);
+    });  
+    console.log('successfully loaded products');
+  });
+  
+  return promise;
+}
 
+/*
+loadProductsFetch().then(() => {
+  console.log('Next step...')
+});
+*/
+
+/*
 export function loadProducts(fun){    // as a calback () this is not used as it will exeute fun instantly
 
   const xhr = new XMLHttpRequest();
@@ -137,6 +164,7 @@ export function loadProducts(fun){    // as a calback () this is not used as it 
   xhr.open('GET', 'https://supersimplebackend.dev/products');
   xhr.send();
 }
+*/
 
 /*
 export const products = [
@@ -826,3 +854,9 @@ export const products = [
 
 
 // converting back the JSON to javascript object.
+
+// by default fetch makes GET request
+//fetch returns a promise 
+//means a async js
+//response is stored as then parameter
+//in this we json.parse is done by the server

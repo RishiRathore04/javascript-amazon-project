@@ -76,6 +76,7 @@ export function updateDeliveryOptions(productId, deliveryOptionId){
   saveToStorage();
 }
 
+/*
 export function loadCart(fun){    // as a calback () this is not used as it will exeute fun instantly
 
   const xhr = new XMLHttpRequest();
@@ -87,4 +88,11 @@ export function loadCart(fun){    // as a calback () this is not used as it will
 
   xhr.open('GET', 'https://supersimplebackend.dev/cart');
   xhr.send();
+}
+*/
+
+export function loadCartFetch(){
+  const promise = fetch('https://supersimplebackend.dev/cart').then((response) => {
+    console.log('successfully loaded cart');
+  })
 }
