@@ -37,6 +37,24 @@ import {renderPaymentSummary} from './checkout/paymentSummary.js';
 //   console.error(error);
 // });
 
+async function loadPage() {
+
+
+  await loadProductsFetch();
+  
+  await loadCartFetch();                 
+
+  renderCheckoutHeader(); 
+  renderOrderSummary(); 
+  renderPaymentSummary();
+
+}
+loadPage();
+
+// console.log('outfirst')  to understand work flow
+
+
+/*
 Promise.all([
   loadProductsFetch(),
   loadCartFetch()
@@ -51,7 +69,7 @@ Promise.all([
 }).catch((error) => {
   console.error('Checkout failed:', error);
 });
-
+*/
 
 //using call backs 
 

@@ -95,4 +95,5 @@ export function loadCartFetch(){
   const promise = fetch('https://supersimplebackend.dev/cart').then((response) => {
     console.log('successfully loaded cart');
   })
+  return promise;
 }
