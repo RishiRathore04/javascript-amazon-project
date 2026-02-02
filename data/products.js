@@ -130,7 +130,9 @@ export function loadProductsFetch(){
       return new Product(productDetails);
     });  
     console.log('successfully loaded products');
-  });
+  }).catch((error) => {                                    //error contains the info about the error
+    console.log("error occured. Please try again.")
+  })
   
   return promise;
 }
@@ -158,10 +160,13 @@ export function loadProducts(fun){    // as a calback () this is not used as it 
     console.log('successfully loaded products');
     
     fun();
-
   }); 
 
-  xhr.open('GET', 'https://supersimplebackend.dev/products');
+  xhr.addEventListener('error', (error) => {
+    console.log("error occured. Please try again.")
+  })
+
+  xhr.open('GET', 'https://error.supersimplebackend.dev/products');
   xhr.send();
 }
 */

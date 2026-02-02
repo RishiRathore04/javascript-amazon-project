@@ -39,10 +39,17 @@ import {renderPaymentSummary} from './checkout/paymentSummary.js';
 
 async function loadPage() {
 
+  try {
 
-  await loadProductsFetch();
-  
-  await loadCartFetch();                 
+    //throw 'error occured';
+    
+
+    await loadProductsFetch(); 
+    await loadCartFetch();
+  }
+  catch(error) {
+    console.log('error occured. Please try again.')
+  }                 
 
   renderCheckoutHeader(); 
   renderOrderSummary(); 
