@@ -97,7 +97,7 @@ const object2 = {
 };
 */
 
-/*
+/* b 
 function logThis() {
   console.log(this);
 }
