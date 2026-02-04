@@ -1,9 +1,10 @@
 import { cart, addToCart } from '../data/cart.js';  // put all the imports ata the top of the file
-import { products , loadProducts} from '../data/products.js';
+import { loadProductsFetch, products } from '../data/products.js';
 import { formatCurrency } from './utils/money.js';
 
-loadProducts(renderProductsGrid);           
-
+loadProductsFetch().then(() => {
+  renderProductsGrid();
+});
 //page will be blank because of asynchronous javascript as this will send request to bckend to get products that will cost some time ...and meanwhile code runs next instructions--> so product arraay is still empty
 
 function renderProductsGrid(){
