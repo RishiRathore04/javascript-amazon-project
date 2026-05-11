@@ -18,11 +18,11 @@ If you are new to web projects, this repository is useful for learning how small
 
 Home page:
 
-![Home page screenshot](images/screenshots/home-page.png)
+![Home page screenshot](images/screenshots/home-page.jpeg)
 
 Checkout page:
 
-![Checkout page screenshot](images/screenshots/checkout-page.png)
+![Checkout page screenshot](images/screenshots/checkout-page.jpeg)
 
 ## Main Pages
 
